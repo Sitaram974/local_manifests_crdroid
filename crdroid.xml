@@ -27,7 +27,7 @@
   <!-- Kernel External Modules (Required by BoardConfig.mk line 157) -->
   <remove-project path="kernel/xiaomi/sm8450-modules" optional="true" />
   <project path="kernel/xiaomi/sm8450-modules"
-           name="TopexGuy/kernel_xiaomi_sm8450-modules"
+           name="Sitaram974/kernel_xiaomi_sm8450-modules"
            remote="sky-remote"
            revision="17" />
 
