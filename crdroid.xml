@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <remote name="sky-remote" fetch="https://github.com" />
+
+  <project path="device/xiaomi/sky" name="Sitaram974/device_xiaomi_sky" remote="sky-remote" revision="17" />
+  <project path="vendor/xiaomi/sky" name="Sitaram974/vendor_xiaomi_sky" remote="sky-remote" revision="17" />
+  <project path="kernel/xiaomi/sky" name="Sitaram974/kernel_xiaomi_sky" remote="sky-remote" revision="17" />
+
+  <!-- MIUI Camera -->
+  <project path="device/xiaomi/miuicamera-sky" name="Sitaram974/device_xiaomi_miuicamera-sky" remote="sky-remote" revision="17" />
+  <project path="vendor/xiaomi/miuicamera-sky" name="Sitaram974/vendor_xiaomi_miuicamera-sky" remote="sky-remote" revision="17" />
+
+  <!-- Dolby -->
+  <project path="hardware/dolby" name="swiitch-OFF-Lab/hardware_dolby" remote="sky-remote" revision="sony-A17" />
+
+  <!-- hardware/xiaomi, libvmmem, lineage interfaces, compat, ContactsProvider -->
+  <remove-project name="LineageOS/android_hardware_xiaomi" optional="true" />
+  <remove-project name="crdroidandroid/android_hardware_xiaomi" optional="true" />
+  <project path="hardware/xiaomi" name="Sitaram974/android_hardware_xiaomi" remote="sky-remote" revision="lineage-24.0" />
+  ... (same pattern for the other four, full file card mein hai)
+
+  <remove-project name="device/google/cuttlefish_vmm" optional="true" />
+  <remove-project name="device/google/trout" optional="true" />
+</manifest>
