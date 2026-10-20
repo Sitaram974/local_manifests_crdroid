@@ -68,9 +68,9 @@
            remote="sky-remote"
            revision="sony-A17" />
 
-  <!-- MindTheGapps for Android 17 (cinnamonbun) In-Built GApps -->
+  <!-- MindTheGapps Forked to Sitaram974 for Android 17 (cinnamonbun) -->
   <project path="vendor/gapps"
-           name="MindTheGapps/vendor_gapps"
+           name="Sitaram974/vendor_gapps"
            remote="sky-remote"
            revision="cinnamonbun"
            clone-depth="1" />
