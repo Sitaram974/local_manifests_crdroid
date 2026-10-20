@@ -1,85 +1,111 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
   <!-- Remote GitHub -->
-  <remote name="sky-remote" fetch="https://github.com" />
+  <remote name="sky-remote"
+          fetch="https://github.com/" />
 
-  <!-- Device Tree (Android 17) -->
-  <remove-project path="device/xiaomi/sky" optional="true" />
+  <!-- ===================================================================== -->
+  <!-- 1. REMOVE CONFLICTING DEFAULT CRDROID / LINEAGEOS 24.0 PROJECTS       -->
+  <!-- ===================================================================== -->
+  <remove-project name="LineageOS/android_hardware_xiaomi" optional="true" />
+  <remove-project name="LineageOS/android_hardware_lineage_compat" optional="true" />
+  <remove-project name="LineageOS/android_hardware_lineage_interfaces" optional="true" />
+  <remove-project name="LineageOS/android_vendor_qcom_opensource_libvmmem" optional="true" />
+  <remove-project name="LineageOS/android_packages_providers_ContactsProvider" optional="true" />
+  <remove-project name="device/google/cuttlefish_vmm" optional="true" />
+  <remove-project name="device/google/trout" optional="true" />
+
+  <!-- ===================================================================== -->
+  <!-- 2. REDMI 12 5G / POCO M6 PRO 5G (sky) DEVICE, VENDOR & KERNEL TREES   -->
+  <!-- ===================================================================== -->
+
+  <!-- Device Tree (Android 17 / crDroid 17.0) -->
   <project path="device/xiaomi/sky"
            name="Sitaram974/device_xiaomi_sky"
            remote="sky-remote"
            revision="17" />
 
   <!-- Vendor Blobs (Android 17) -->
-  <remove-project path="vendor/xiaomi/sky" optional="true" />
   <project path="vendor/xiaomi/sky"
            name="Sitaram974/vendor_xiaomi_sky"
            remote="sky-remote"
-           revision="17" />
+           revision="17"
+           clone-depth="1" />
 
   <!-- Kernel Tree (Android 17 - Source Built) -->
-  <remove-project path="kernel/xiaomi/sky" optional="true" />
   <project path="kernel/xiaomi/sky"
            name="Sitaram974/kernel_xiaomi_sky"
            remote="sky-remote"
-           revision="17" />
+           revision="17"
+           clone-depth="1" />
 
   <!-- Kernel External Modules (Required by BoardConfig.mk line 157) -->
-  <remove-project path="kernel/xiaomi/sm8450-modules" optional="true" />
   <project path="kernel/xiaomi/sm8450-modules"
            name="Sitaram974/kernel_xiaomi_sm8450-modules"
            remote="sky-remote"
-           revision="17" />
+           revision="17"
+           clone-depth="1" />
+
+  <!-- ===================================================================== -->
+  <!-- 3. MIUI CAMERA, DOLBY & GAPPS (ANDROID 17 / CINNAMONBUN)              -->
+  <!-- ===================================================================== -->
 
   <!-- MIUI Camera Device & Vendor Trees (Android 17) -->
-  <remove-project path="device/xiaomi/miuicamera-sky" optional="true" />
   <project path="device/xiaomi/miuicamera-sky"
            name="Sitaram974/device_xiaomi_miuicamera-sky"
            remote="sky-remote"
            revision="17" />
 
-  <remove-project path="vendor/xiaomi/miuicamera-sky" optional="true" />
   <project path="vendor/xiaomi/miuicamera-sky"
            name="Sitaram974/vendor_xiaomi_miuicamera-sky"
            remote="sky-remote"
-           revision="17" />
+           revision="17"
+           clone-depth="1" />
 
   <!-- Dolby Hardware Dependency (Android 17) -->
-  <remove-project path="hardware/dolby" optional="true" />
   <project path="hardware/dolby"
            name="Sitaram974/hardware_dolby"
            remote="sky-remote"
            revision="sony-A17" />
 
-  <!-- Xiaomi Hardware Dependency (Android 17 / Lineage 24.0) -->
-  <remove-project path="hardware/xiaomi" optional="true" />
+  <!-- MindTheGapps for Android 17 (cinnamonbun) In-Built GApps -->
+  <project path="vendor/gapps"
+           name="MindTheGapps/vendor_gapps"
+           remote="sky-remote"
+           revision="cinnamonbun"
+           clone-depth="1" />
+
+  <!-- ===================================================================== -->
+  <!-- 4. HARDWARE, CONTACTSPROVIDER & QCOM OVERRIDES (Lineage 24.0 / A17)   -->
+  <!-- ===================================================================== -->
+
+  <!-- ContactsProvider Fix (Android 17 / Lineage 24.0) -->
+  <project path="packages/providers/ContactsProvider"
+           name="Sitaram974/android_packages_providers_ContactsProvider"
+           remote="sky-remote"
+           revision="lineage-24.0" />
+
+  <!-- Xiaomi Hardware Dependency -->
   <project path="hardware/xiaomi"
            name="Sitaram974/android_hardware_xiaomi"
            remote="sky-remote"
            revision="lineage-24.0" />
 
-  <!-- Lineage Compat Dependency (Android 17 / Lineage 24.0) -->
-  <remove-project path="hardware/lineage/compat" optional="true" />
+  <!-- Lineage Compat Dependency -->
   <project path="hardware/lineage/compat"
            name="Sitaram974/android_hardware_lineage_compat"
            remote="sky-remote"
            revision="lineage-24.0" />
 
-  <!-- Qualcomm libvmmem for Display Snapalloc (Android 17 / Lineage 24.0) -->
-  <remove-project path="vendor/qcom/opensource/libvmmem" optional="true" />
+  <!-- Qualcomm libvmmem for Display Snapalloc -->
   <project path="vendor/qcom/opensource/libvmmem"
            name="Sitaram974/android_vendor_qcom_opensource_libvmmem"
            remote="sky-remote"
            revision="lineage-24.0" />
 
-  <!-- Permanent Fix: Lineage Interfaces (Fixed FastCharge.h for Android 17 / Lineage 24.0) -->
-  <remove-project path="hardware/lineage/interfaces" optional="true" />
+  <!-- Permanent Fix: Lineage Interfaces (FastCharge.h for Android 17 / Lineage 24.0) -->
   <project path="hardware/lineage/interfaces"
            name="Sitaram974/android_hardware_lineage_interfaces"
            remote="sky-remote"
            revision="lineage-24.0" />
-
-  <!-- Remove Unused Google Virtual Emulators -->
-  <remove-project name="device/google/cuttlefish_vmm" optional="true" />
-  <remove-project name="device/google/trout" optional="true" />
 </manifest>
